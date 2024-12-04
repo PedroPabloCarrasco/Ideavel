@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Idea; // Importar el modelo Idea si se usará
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB; // Corrección de la importación
+use Illuminate\Support\Facades\DB; 
 use Illuminate\View\View;
 
 class IdeaController extends Controller
@@ -12,8 +12,8 @@ class IdeaController extends Controller
     public function index(): View
     {
         // Puedes usar Eloquent para mayor claridad
-        $ideas = DB::table('ideas')->get();
-        $ideas = Idea::all(); // Reemplazar por DB::table('ideas')->get() si prefieres consultas directas
+        $ideas = DB::table('ideas')->get(); // Select * from ideas
+        $ideas = Idea::all(); 
 
         // Retornar la vista correctamente
         return view('ideas.index', ['ideas' => $ideas]);
@@ -30,7 +30,20 @@ class IdeaController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        //campos validados|Validaciones
+        $validated = $request->validate([
+            'title' => 'rquired|string|max:100',
+            'description' => 'rquired|string|max:300',
+        ]);
+
+        Idea::create()([
+            'user_id' => $validated['user_id'],
+            'title' => $validated['title'],
+            'description' => $validated['description'],
+        ]);
+
+
+        return redirect()->route('ideas.index');
 
     }
 

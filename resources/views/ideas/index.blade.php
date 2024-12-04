@@ -27,6 +27,7 @@
                                     <small class="text-sm text-gray-400"> &middot; Editado</small>
                                 @endunless
                             </div>
+                            
                             @auth
                                 <x-dropdown>
                                     <x-slot name="trigger">
@@ -62,7 +63,7 @@
                     </div>
                 </div>
                 @empty
-                    <h2 class="text-xl text-white p-4">No existen ideas almacenadas!</h2>
+                    <h2 class="text-xl text-black p-4">No existen ideas almacenadas!</h2>
                 @endforelse
             </div>
         </div>

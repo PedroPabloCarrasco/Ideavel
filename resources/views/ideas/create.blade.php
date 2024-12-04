@@ -7,7 +7,7 @@
                         @csrf
                         @method('post')
 
-                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required placeholder="Ingresa título" />
+                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="title" :value="old('title')"placeholder="Ingresa título" />
                         <x-input-error :messages="$errors->get('title')" class="mt-2" />
 
                         <textarea

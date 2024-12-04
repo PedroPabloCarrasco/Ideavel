@@ -17,7 +17,7 @@
                     </x-nav-link>
 
                     <x-nav-link :href="route('idea.index')" :active="request()->routeIs('idea.index')">
-                        Ideas
+                        Mis ideas
                     </x-nav-link>
                 </div>
             </div>
